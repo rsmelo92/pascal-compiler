@@ -1,9 +1,66 @@
-program HelloWorld;
 
-// Here the main program block starts
+and
+array
 begin
-	writeln('Hello, World!');
-	readkey;
-	array
-	+
+case
+char
+const
+div
+do
+downto
+else
 end
+file
+for
+function
+goto
+if
+in
+integer
+label
+mod
+nil
+not
+of
+or
+packed
+procedure
+program
+real
+record
+repeat set
+string
+then
+to
+type
+until
+var
+while
+with
+ +
+ -
+ *
+ /
+ :=
+ .
+ ,
+ ;
+ :
+ '
+ <>
+ <
+ <=
+ >
+ >=
+ =
+ (
+ )
+ [
+ ]
+ {
+ }
+ ..
+ ->
+ /*
+ */
+ //

@@ -30,7 +30,9 @@ reserved = {
     'packed': 'PACKED',
     'procedure': 'PROCEDURE',
     'program': 'PROGRAM',
+    'real': 'REAL',
     'repeat': 'REPEAT',
+    'record': 'RECORD',
     'set': 'SET',
     'then': 'THEN',
     'to': 'TO',
@@ -42,33 +44,33 @@ reserved = {
 }
 
 special_symbols = {
-    r'\+': 'PLUS',
-    r'-': 'MINUS',
-    r'\*': 'TIMES',
-    r'/': ' DIVIDE',
-    r':=': 'ASSIGN',
-    r'\.': 'PERIOD',
-    r',': 'COMMA',
-    r';': 'SEMICOLON',
-    r':': 'COLON',
-    r'\'': 'QUOTATION_MARK',
-    r'<>': 'NOT_EQUAL',
-    r'<': 'LESS',
-    r'<=': 'LESS_EQUAL',
-    r'>': 'GREATER',
-    r'>=': 'GREATER_EQUAL',
-    r'=': 'EQUAL',
-    r'\(': 'LPAREN',
-    r'\)': 'RPAREN',
-    r'\[': 'LSQUAR',
-    r'\]': 'RSQUAR',
-    r'\{': 'LCURLY',
-    r'\}': 'RCURLY',
-    r'\.\.': 'TWO_DOTS',
-    r'->': 'ARROW',
-    r'/\*': 'LCOMMEN',
-    r'\*/': 'RCOMMEN',
-    r'//': 'COMMENT_LINE'
+    '+': 'PLUS',
+    '-': 'MINUS',
+    '*': 'TIMES',
+    '/': ' DIVIDE',
+    ':=': 'ASSIGN',
+    '.': 'PERIOD',
+    ',': 'COMMA',
+    ';': 'SEMICOLON',
+    ':': 'COLON',
+    "'": 'QUOTATION_MARK',
+    '<>': 'NOT_EQUAL',
+    '<': 'LESS',
+    '<=': 'LESS_EQUAL',
+    '>': 'GREATER',
+    '>=': 'GREATER_EQUAL',
+    '=': 'EQUAL',
+    '(': 'LPAREN',
+    ')': 'RPAREN',
+    '[': 'LSQUAR',
+    ']': 'RSQUAR',
+    '{': 'LCURLY',
+    '}': 'RCURLY',
+    '..': 'TWO_DOTS',
+    '->': 'ARROW',
+    '\*': 'LCOMMEN',
+    '*/': 'RCOMMEN',
+    '//': 'COMMENT_LINE'
 }
 
 
@@ -92,24 +94,27 @@ def t_STRING(t):
 for line in program:
     count = count+1
     print('\n')
-    print("Linha ", count, "\n", line)
-    regex = re.compile(r'[\n\r\t]')
-    lineCleaned = regex.sub("", line)
+    print("Linha ", count, "\n", line, "\n")
+
+    removeBreaks = re.compile(r'[\n\r\t]')
+    lineCleaned = removeBreaks.sub("", line)
 
     strings = t_STRING(re.findall("'(.*?)\'", lineCleaned))
+
     tokens = lineCleaned.split(' ')
     print("Tokens: ", tokens)
-    for token in tokens:
 
+    for token in tokens:
         if '\r' in token:
             position = token.find('\r')
             token = token[:position]
 
         if token in reserved:
             print('reserved: ', reserved[token])
+            print(True)
 
         if token in special_symbols:
             print("special_symbols: ", special_symbols[token])
-
+            print(True)
 
 f.close()
